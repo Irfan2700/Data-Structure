@@ -20,7 +20,9 @@
 **********************************************************************************************************************
 **********************************************************************************************************************/
 
-var List = require('../LinkedList');
+var List = require('../Implementation/UnorderedLinkedList.js');
+var ordered = require('../Implementation/OrderedLinkedList.js');
+var stacks = require('../Implementation/stack.js');
 
 module.exports ={
 
@@ -32,20 +34,75 @@ module.exports ={
 
             obj.append(str[i]);
         }
-        var inst;
-        console.log(obj.printList());
+        //var inst;
+        //console.log(obj.printList());
 
+        if(isNaN())
         var find = readlinesync.question("Enter the Word you want to Search.. : ");
 
         if(obj.search(find)){
 
-            obj.removeIndex(find);
+            obj.removeIndex(obj.indexOf(find)-1);
         }else{
             console.log("Word is not found !! , Now It is added to the List!... : ");
             obj.append(find);
         }
-        console.log(obj.printList());
-        //return obj;
-    }
+        //console.log(obj.printList());
+
+        return obj;
+    },
+
+    orderedFileList : function(str, readlinesync){
+
+            var obj = new ordered();
+            var arr = [];
+            for(var i=0; i<str.length; i++){
+    
+                obj.add(str[i]);
+            }
+
+            obj.sorting();
+            //var inst;
+            
+    
+            
+            var find = readlinesync.question("Enter the Word you want to Search.. : ");
+    
+            if(!(isNaN(find))){
+            if(obj.search(find)){
+    
+                obj.removeIndex(obj.indexOf(find)-1);
+            }else{
+                console.log("Word is not found !! , Now It is added to the List!... : ");
+                obj.add(find);
+                obj.sorting();
+            }
+            //console.log(obj.printList());
+        }
+            return obj;
+    },
+
+    balanceParentheses : function(r){
+
+        var obj = new stacks();
+        var s = r.split('');
+
+        for(var i=0; i<s.length-2; i++){
+
+            if(s[i] === '('){
+                var a = 1;
+                obj.push(a);
+
+            }else if(s[i] === ')'){
+
+                obj.pop();
+                console.log(obj.printList());
+            }
+            }
+
+            if(obj.isEmpty() === -1) return true;
+            else return false
+        }
+    
 
 }

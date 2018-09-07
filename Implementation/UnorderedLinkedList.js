@@ -95,7 +95,7 @@
 
                  n = n.next;
              }
-             n = n.next;
+             n.next = n.next.next;
              this.count--;
          }
      }
@@ -116,7 +116,7 @@
 
      isEmpty() {
 
-         if (this.first === null)
+         if (this.size() === 0)
              return -1
          else return 1;
      }
@@ -211,15 +211,64 @@
         if (this.size()===0) return "[]";
 
         var n = this.first;
-        var str = "["+n.ele;
+        var str = n.ele+" ";
         while(n.next!== null){
 
             n = n.next;
-            str += ", "+n.ele;
+            str += n.ele+" ";
         }
-        return " "+str+"]";
+        return str;
         
      }
+     
+     //removeElement(e){
+     
+        sorting() {
+
+            var a = [];
+    
+            var n = this.first;
+            for (var i = 1; i <= this.size(); i++) {
+    
+                if (this.size() === 0) {
+                    throw "Empty List!!!";
+                    return;
+                }
+                //var n = obj.first;
+                a.push(n.ele);
+                n = n.next;
+    
+            }
+    
+            for (var i = 1; i < a.length; i++) {
+                var key = parseInt(a[i]);
+                var j = i - 1;
+    
+                while (j > -1 && parseInt(a[j]) > key) {   //shifting the small number into the left most
+    
+                    a[j + 1] = a[j];        //puting the larger number in place of smaller one
+                    j--;
+                }
+    
+                a[j + 1] = key;       //puting the smaller in the left most postion
+            }
+    
+    
+    
+            this.first = new Node(a[0], null);
+            this.last = this.first;
+            this.count++;
+    
+            for(var i=1; i<a.length; i++){
+    
+             this.last.next = new Node(a[i], null);
+             this.last = this.last.next;
+             this.count++;
+    
+            }
+    
+        }
+     
 
  };
 
