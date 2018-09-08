@@ -2,31 +2,33 @@ var readlinesync = require('readline-sync');
 // var utility = require('../Implementation/UnorderedLinkedList.js');
 // var util = require('../Implementation/OrderedLinkedList');
 var u = require('../Implementation/stack.js');
+var ut = require('../Implementation/deque.js');
 
 function add() {
 
 
 
-    var obj = new u();
-    // for (var i = 0; i < 4; i++) {
-    //     var read = readlinesync.question("enter the Number...");
-    //     obj.append(read);
-    // }
+    var obj = new ut();
+    for (var i = 0; i < 4; i++) {
+        var read = readlinesync.question("enter the Number...");
+        obj.addRear(read);
+    }
 
-    obj.push(1);
-    obj.push(2);
-    obj.push(3);
-    obj.push(4);
-    obj.push(5);
+    console.log(obj.printList());
+        obj.removeRear();
+//    obj.addRear();
+//    obj.addRear();
+//    obj.addRear();
+//    obj.addRear();
 
     //console.log(obj.isEmpty());
      console.log(obj.printList());
 
     // var a = [];
-     obj.pop();
-     obj.pop();
+    //  obj.pop();
+    //  obj.pop();
      
-     console.log(obj.printList());
+    // console.log(obj.printList());
     // console.log(obj.isEmpty());
     // var n = obj.first;
     // for (var i = 1; i <= obj.size(); i++){

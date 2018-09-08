@@ -110,6 +110,7 @@
 
              n = n.next;
          }
+         this.last = n;
          n = null;
          this.count--;
      }

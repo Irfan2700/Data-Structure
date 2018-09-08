@@ -5,18 +5,19 @@ class Node {
     }
 };
 
-module.exports = class Stack {
+module.exports = class Queue {
 
     constructor() {
         this.first = null;
-        this.last = null;
+        this.rear = null;
         this.count = 0;
+        this.balance = parseInt(1000);
     }
 
-    stack() {
+    queue() {
 
         this.first = new Node(null, null);
-        this.last = this.first;
+        this.rear = this.first;
         this.count++;
     }
 
@@ -27,11 +28,26 @@ module.exports = class Stack {
     isEmpty() {
 
         if (this.size() === 0)
-            return -1
-        else return 1;
+            return true
+        else return false;
     }
 
-    pop() {
+    enqueue(e) {
+
+        if (this.first === null) {
+
+            this.first = new Node(e, null);
+            this.rear = this.first;
+            this.count++;
+            return;
+        }
+
+        this.rear.next = new Node(e, null);
+        this.rear = this.rear.next;
+        this.count++;
+    }
+
+    dequeue(){
 
         if (this.first === null) return null;
 
@@ -39,22 +55,6 @@ module.exports = class Stack {
 
         this.first = this.first.next;
         this.count--;
-        return n;
-    }
-
-    push(e) {
-
-
-        this.first = new Node(e, this.first);
-        this.count++;
-
-    }
-
-    peek(){
-
-        if(this.first === null) return null;
-
-        return this.first.ele;
     }
 
     printList(){
@@ -72,4 +72,5 @@ module.exports = class Stack {
         
      }
 
+     
 }
