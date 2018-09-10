@@ -45,6 +45,7 @@ module.exports = class Queue {
         this.rear.next = new Node(e, null);
         this.rear = this.rear.next;
         this.count++;
+        
     }
 
     dequeue(){
@@ -55,6 +56,9 @@ module.exports = class Queue {
 
         this.first = this.first.next;
         this.count--;
+
+        return n;
+
     }
 
     printList(){

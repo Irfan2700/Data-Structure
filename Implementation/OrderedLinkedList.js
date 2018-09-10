@@ -13,6 +13,13 @@ module.exports = class LinkedList {
         this.count = 0;
     }
 
+    list(){
+
+        this.first = new Node(null, null);
+        this.last = this.first;
+        this.count++;
+    }
+
     sorting() {
 
         var a = [];

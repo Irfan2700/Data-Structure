@@ -191,37 +191,176 @@ module.exports = {
 
     palindromeCheck: function (string) {
 
-        if(isNaN(string)){
-        var objdeq = new deque();
+        if (isNaN(string)) {
+            var objdeq = new deque();
 
-        var str = string.split('');
-        var flag = true;
-        for (var i = 0; i < str.length; i++) {
+            var str = string.split('');
+            var flag = true;
+            for (var i = 0; i < str.length; i++) {
 
-            objdeq.addRear(str[i]);
+                objdeq.addRear(str[i]);
+            }
+
+            while (objdeq.size() > 2) {
+                if (objdeq.size() == 1) {
+                    break;
+
+                }
+
+                var a = objdeq.removeFront();
+                var b = objdeq.removeRear();
+                if (a == b) {
+                    flag = true;
+                } else {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag === true) {
+                console.log("It is a Pallindrom!! ....");
+
+            } else {
+                console.log("Not a pallindrom!! ....")
+            }
+        } else {
+            console.log("Invalid Input!! ");
+        }
+    },
+
+    calender: function () {
+
+        var week = new queue();
+        var weekDays = new queue();
+        var date = new queue();
+
+        for (var i = 1; i <= 7; i++) {
+
+            weekDays.enqueue(i);
         }
 
-            while(objdeq.size()>2){
-             if(objdeq.size() == 1){
-                 break;
+        for (var j = 1; j <= 31; j++) {
 
-             }   
 
-             var a = objdeq.removeFront();
-             var b = objdeq.removeRear();
-             if(a == b){
-                 flag = true;
-             }else{
-                 flag = false;
-                 break;
-             }
+        }
+
+    },
+
+    primeNumber2D: function () {
+
+
+        var a = [];
+
+        var n = 0;
+        while (n < 1000) {
+            var arr = [];
+            for (var j = n; j < 100 + n; j++) {
+
+                var flag = false;
+                for (var k = 2; k <= j / 2; k++) {
+
+                    if (j % k === 0) {
+                        flag = true;
+                    }
+
+                }
+                if (flag === false) { //console.log(i);
+                    arr.push(j);
+                }
+            }
+            a.push(arr);
+            n += 100;
+        }
+        return a;
+    },
+
+    primeCheck: function () {
+
+        var arr = [];
+        for (var j = 0; j < 1000; j++) {
+
+            var flag = false;
+            for (var k = 2; k <= j / 2; k++) {
+
+                if (j % k === 0) {
+                    flag = true;
+                }
+
+            }
+            if (flag === false) { //console.log(i);
+                arr.push(j);
+            }
+        }
+        return arr;
+
+    },
+
+    anagramPrimeCheck: function (arr) {
+
+
+        var a1 = [];
+
+        for (var i = 0; i <= arr.length - 1; i++) { //nested for loop
+            for (var j = i + 1; j <= arr.length; j++) { //i+1 to avoid the avoid comparision with number it self
+                var s1 = '' + parseInt(arr[i]); //converting each element into string  
+                var s2 = '' + parseInt(arr[j]);
+                if ((((s1.split('')).sort()).join()) === (((s2.split('')).sort()).join())) { //check for anagram
+
+                    // arr1.push(parseInt(s1)); 
+                    a1.push(parseInt(s1));
+                    a1.push(parseInt(s2)); //pushing all anagram element into an array
+                }
+
+
+            }
+        }
+        return a1;
+
+    },
+
+    anagram2D: function (a1) {
+
+        var a2 = this.primeCheck();
+        var array = [];
+
+        for (var i = 0; i < a2.length; i++) {
+            for (var j = 0; j < a1.length; j++) {
+
+                if (a2[i] === a1[j]) {
+
+                    a2.splice(i, 1);
+                }
+            }
+        }
+        array.push(a1);
+        array.push(a2);
+
+        return array;
+
+
+    },
+
+    anagramStack: function (a1) {
+
+        var objstack = new stacks();
+
+        for (var i = 0; i < a1.length; i++) {
+
+            objstack.push(a1[i]);
+        }
+
+        console.log(objstack.printList());
+    },
+
+    anagramQueue: function (a1) {
+
+        var objque = new queue();
+
+        for (var i = 0; i < a1.length; i++) {
+
+            objque.enqueue(a1[i]);
+        }
+
+        console.log(objque.printList());
     }
-    if(flag === true){
-        console.log("It is a Pallindrom!! ....");
 
-    }else{console.log("Not a pallindrom!! ....")}
-}else {
-    console.log("Invalid Input!! ");
-}
-    }
 }
