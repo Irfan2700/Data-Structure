@@ -11,7 +11,7 @@ module.exports = class Queue {
         this.first = null;
         this.rear = null;
         this.count = 0;
-        this.balance = parseInt(1000);
+        this.balance = parseInt(10000);
     }
 
     queue() {

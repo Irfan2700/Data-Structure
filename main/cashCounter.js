@@ -6,12 +6,12 @@ function cashCounter() {
 
 
     //var result;
+    try{
     var objq = new queu();
     var times = readlinesync.question("Enter how many People Standing in the Queue?? : ");
     if (!(isNaN(times))) {
         for (var i = 1; i <= times; i++) {
             objq.enqueue(i);
-            objq.sorting();
         }
     } else {
         console.log("Invalid Entry!!")
@@ -19,7 +19,7 @@ function cashCounter() {
     }
 
     var c = 1;
-    
+
     while (!(objq.isEmpty())) {
 
         console.log(" ");
@@ -50,5 +50,8 @@ function cashCounter() {
         // console.log(objq.printList());
         console.log("THANK YOU !!...");
     }
+}catch{
+    console.log("Something went wrong!!... please try again..");
+}
 }
 cashCounter();
